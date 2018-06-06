@@ -1,0 +1,24 @@
+branch: release
+
+#Things a wanna execute
+tasks:
+  - test:
+      cmd: mvn test
+  - compile:
+      cmd: mvn compile
+  - clean:
+      cmd: mvn clean
+
+
+# Ordenaded way to run my steps
+pipelines:
+  - test:
+     - test
+  - release:
+      - build
+      - integration
+      - compress
+  - compile:
+     - clean
+     - compile
+      
