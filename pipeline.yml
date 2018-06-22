@@ -8,10 +8,14 @@ tasks:
       cmd: mvn compile
   - clean:
       cmd: mvn clean
+  - checkout:
+      cmd: echo "Checking out the code"
 
 
 # Ordenaded way to run my steps
 pipelines:
+  - checkout:
+    - checkout
   - test:
      - test
   - release:
