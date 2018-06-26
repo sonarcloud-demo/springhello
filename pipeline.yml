@@ -10,6 +10,10 @@ tasks:
       cmd: mvn clean
   - checkout:
       cmd: echo "Checking out the code"
+  - fail:
+      cmd: exit 1
+  - write_file:
+      cmd: touch /tmp/failfast.txt
 
 
 # Ordenaded way to run my steps
@@ -25,4 +29,6 @@ pipelines:
   - compile:
      - clean
      - compile
-      
+  - failfast:
+     - fail
+     - write_file
